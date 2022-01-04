@@ -1,3 +1,5 @@
+let pscore = 0;
+let cscore = 0;
 function computerPlay() {
     let rand = Math.floor(Math.random() * 3);
     if (rand == 0) {
@@ -17,17 +19,21 @@ function playRound(computerPlay, playerSelection) {
             return "Draw";
         }
         else if (computerPlay == "Scissor") {
+            pscore++;
             return "Player wins! Rock beats Scissor";
         }
         else {
+            cscore++;
             return "Computer wins! Paper beats Rock";
         }
     }
     else if (lowercaseinp == "paper") {
         if (computerPlay == "Rock") {
+            pscore++;
             return "Player wins! Paper beats Rock";
         }
         else if (computerPlay == "Scissor") {
+            cscore++;
             return "Computer wins! Scissor beats Paper";
         }
         else {
@@ -36,12 +42,14 @@ function playRound(computerPlay, playerSelection) {
     }
     else if (lowercaseinp == "scissor") {
         if (computerPlay == "Rock") {
+            cscore++;
             return "Computer wins! Rock beats Scissor";
         }
         else if (computerPlay == "Scissor") {
             return "Draw";
         }
         else {
+            pscore++;
             return "Player wins! Scissor beats Paper";
         }
     }
@@ -49,9 +57,13 @@ function playRound(computerPlay, playerSelection) {
         return "Invalid input";
     }
 }
-
-for (let i = 0; i < 5; i++) {
-    let input = prompt("Enter Rock, Paper or Scissor");
-    let input2 = computerPlay();
-    alert("Computer chose " + input2 + " , " + (playRound(input2, input)));
+let user = prompt("Enter username");
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let input = prompt("Enter Rock, Paper or Scissor");
+        let input2 = computerPlay();
+        alert(user + " chose: " + input.toUpperCase() + "\nComputer chose: " + input2.toUpperCase() + "\n" + playRound(input2, input));
+        alert("          𝐒𝐂𝐎𝐑𝐄\n " + user + " = " + pscore + "\nComputer = " + cscore);
+    }
 }
+game();
