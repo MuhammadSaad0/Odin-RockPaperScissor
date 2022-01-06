@@ -57,13 +57,44 @@ function playRound(computerPlay, playerSelection) {
         return "Invalid input";
     }
 }
-let user = prompt("Enter username");
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let input = prompt("Enter Rock, Paper or Scissor");
-        let input2 = computerPlay();
-        alert(user + " chose: " + input.toUpperCase() + "\nComputer chose: " + input2.toUpperCase() + "\n" + playRound(input2, input));
-        alert("          𝐒𝐂𝐎𝐑𝐄\n " + user + " = " + pscore + "\nComputer = " + cscore);
+let audio = new Audio("button.wav");
+let winner = document.querySelector("#header");
+let score = document.querySelector("#score");
+let img = document.querySelector("#img");
+function myfunction(inp, playerSelection) {
+
+    let x1 = pscore;
+    let x2 = cscore;
+    inp.classList.add("clicked");
+    audio.play();
+    let result = (playRound(computerPlay(), playerSelection));
+    if (pscore > x1) {
+        img.src = "thumbsupemoji.png";
     }
+    if (cscore > x2) {
+        img.src = "sademoji.png";
+    }
+    if (pscore == x1 && cscore == x2) {
+        img.src = "L.png";
+    }
+    winner.textContent = result;
+    score.textContent = "Player: " + pscore + "            Computer: " + cscore;
+    winner.classList.add("clicked2");
+
+    setTimeout(() => {
+        $(inp).removeClass("clicked");
+        $(winner).removeClass("clicked2");
+        $(score).removeClass("clicked2");
+
+
+    }, 250);
+    audio.currentTime = 0;
 }
-game();
+
+let rb = document.querySelector("#rock");
+rb.addEventListener("click", function () { myfunction(rb, "rock"); });
+
+let pb = document.querySelector("#paper");
+pb.addEventListener("click", function () { myfunction(pb, "paper"); });
+let sb = document.querySelector("#scissor");
+sb.addEventListener("click", function () { myfunction(sb, "scissor"); });

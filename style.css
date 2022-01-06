@@ -1,4 +1,59 @@
 body
 {
+    font-family: monospace;
+    color:white;
     background-color: black;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width:100px;
+    height:auto;
+    border-radius: 100%;
+}
+button{
+    width:200px;
+    height:50px;
+    font-size: 26px;
+    background-color: white;
+    display: inline-flex;
+    margin-top:300px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 230px;
+    transition: all .07s ease;
+    
+}
+.clicked{
+    border-color: red;
+    box-shadow: 0 0 1rem red;
+    transform:scale(1.1);
+}
+.clicked2{
+    border-color: blue;
+    box-shadow: 0 0 1rem blue;
+    transform:scale(1.1);
+}
+
+.result{
+    display: flex;
+    justify-content: center;
+}
+#header{
+    text-align: center;
+    background-color: white;
+    color:black;
+    width:550px;
+}
+.div2{
+    display: flex;
+    justify-content: center;   
+}
+#score{
+    text-align: center;
+    background-color: white;
+    color:black;
+    width:550px;
 }
